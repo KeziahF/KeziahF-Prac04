@@ -4,12 +4,15 @@ Data file -> lists program
 """
 
 FILENAME = "subject_data.txt"
-
+all_data = []
 
 def main():
     data = get_data()
     print(data)
 
+def display_data():
+    for subject_data in all_data:
+        print("{} is taught by {:12} and has {:3} students".format(*subject_data))
 
 def get_data():
     """Read data from file formatted like: subject,lecturer,number of students."""
@@ -23,7 +26,10 @@ def get_data():
         parts[2] = int(parts[2])  # Make the number an integer (ignore PyCharm's warning)
         print(parts)  # See if that worked
         print("----------")
+        all_data.append(parts)
     input_file.close()
+    display_data()
+    return all_data
 
 
 main()
